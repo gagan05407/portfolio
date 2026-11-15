@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Sun, Moon, FileText, ArrowUpRight, Sparkles } from 'lucide-react';
+import { Menu, X, Sun, Moon, FileText, Command, Sparkles } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 
-export default function Navbar({ isDark, toggleTheme, onOpenResume }) {
+export default function Navbar({ isDark, toggleTheme, onOpenResume, onOpenCommandPalette }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -11,10 +11,10 @@ export default function Navbar({ isDark, toggleTheme, onOpenResume }) {
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
     { name: 'Expertise', href: '#expertise' },
+    { name: 'What I Build', href: '#value-props' },
     { name: 'Projects', href: '#projects' },
     { name: 'Experience', href: '#experience' },
     { name: 'Education', href: '#education' },
-    { name: 'Skills', href: '#skills' },
     { name: 'DSA', href: '#dsa' },
     { name: 'Contact', href: '#contact' },
   ];
@@ -23,9 +23,8 @@ export default function Navbar({ isDark, toggleTheme, onOpenResume }) {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      // Section spy
       const sections = navLinks.map(l => l.href.substring(1));
-      const scrollPos = window.scrollY + 120;
+      const scrollPos = window.scrollY + 140;
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const el = document.getElementById(sections[i]);
@@ -36,7 +35,7 @@ export default function Navbar({ isDark, toggleTheme, onOpenResume }) {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -69,22 +68,22 @@ export default function Navbar({ isDark, toggleTheme, onOpenResume }) {
             onClick={(e) => handleNavClick(e, '#home')}
             className="flex items-center gap-2.5 group"
           >
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-cyan-500 flex items-center justify-center text-white font-mono font-bold text-base shadow-sm group-hover:scale-105 transition-transform duration-200">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 via-sky-500 to-cyan-500 flex items-center justify-center text-white font-mono font-bold text-sm shadow-sm group-hover:scale-105 transition-transform duration-200">
               GG
             </div>
             <div className="flex flex-col">
-              <span className="font-bold tracking-tight text-slate-900 dark:text-white text-base leading-none group-hover:text-blue-500 transition-colors">
+              <span className="font-bold font-display tracking-tight text-slate-900 dark:text-white text-base leading-none group-hover:text-blue-500 transition-colors">
                 Gagan Gaur
               </span>
               <span className="text-[11px] font-mono text-slate-500 dark:text-slate-400 leading-tight mt-0.5 flex items-center gap-1">
                 <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                AI & SWE
+                AI & Systems
               </span>
             </div>
           </a>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center space-x-1">
+          <nav className="hidden xl:flex items-center space-x-1">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.substring(1);
               return (
@@ -92,7 +91,7 @@ export default function Navbar({ isDark, toggleTheme, onOpenResume }) {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                  className={`px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
                     isActive
                       ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/50 font-semibold'
                       : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-dark-800/60'
@@ -104,8 +103,18 @@ export default function Navbar({ isDark, toggleTheme, onOpenResume }) {
             })}
           </nav>
 
-          {/* Right Action Controls: Resume + Theme Toggle */}
-          <div className="hidden sm:flex items-center gap-3">
+          {/* Right Action Controls: Command Palette + Theme + Resume */}
+          <div className="hidden sm:flex items-center gap-2.5">
+            {/* Command Palette Trigger */}
+            <button
+              onClick={onOpenCommandPalette}
+              className="inline-flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-xs font-mono text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white bg-slate-100/70 dark:bg-dark-850 hover:bg-slate-200 dark:hover:bg-dark-800 border border-slate-200 dark:border-slate-800 transition"
+              title="Search and Quick Commands"
+            >
+              <Command className="w-3.5 h-3.5" />
+              <span className="text-[11px]">⌘K</span>
+            </button>
+
             {/* Theme Toggle Button */}
             <button
               onClick={toggleTheme}
@@ -126,8 +135,15 @@ export default function Navbar({ isDark, toggleTheme, onOpenResume }) {
             </button>
           </div>
 
-          {/* Mobile menu and theme buttons */}
-          <div className="flex items-center gap-2 lg:hidden">
+          {/* Mobile menu and controls */}
+          <div className="flex items-center gap-2 xl:hidden">
+            <button
+              onClick={onOpenCommandPalette}
+              className="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-dark-800"
+              aria-label="Quick Commands"
+            >
+              <Command className="w-4 h-4" />
+            </button>
             <button
               onClick={toggleTheme}
               className="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-dark-800"
@@ -148,7 +164,7 @@ export default function Navbar({ isDark, toggleTheme, onOpenResume }) {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-dark-900/95 backdrop-blur-xl px-4 pt-2 pb-6 space-y-1 shadow-xl">
+        <div className="xl:hidden border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-dark-900/95 backdrop-blur-xl px-4 pt-2 pb-6 space-y-1 shadow-xl animate-fadeIn">
           <div className="grid grid-cols-2 gap-1 py-2">
             {navLinks.map((link) => (
               <a

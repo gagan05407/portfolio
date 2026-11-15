@@ -26,7 +26,7 @@ export default function About() {
             <BookOpen className="w-3.5 h-3.5" />
             <span>BACKGROUND & IDENTITY</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+          <h2 className="text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-slate-900 dark:text-white">
             {aboutData.heading}
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-blue-600 to-cyan-500 mx-auto rounded-full"></div>
@@ -43,7 +43,7 @@ export default function About() {
           </div>
 
           {/* Quick Dual Degree Callout Card */}
-          <div className="lg:col-span-4 p-6 rounded-2xl bg-white dark:bg-dark-850 border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden group">
+          <div className="lg:col-span-4 p-6 rounded-3xl bg-white dark:bg-dark-850 border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden group">
             <div className="absolute top-0 right-0 w-28 h-28 bg-blue-500/10 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-500 pointer-events-none"></div>
             
             <div className="flex items-center gap-2 text-xs font-mono font-bold text-blue-600 dark:text-blue-400 mb-3 uppercase tracking-wider">
@@ -52,25 +52,25 @@ export default function About() {
 
             <div className="space-y-4">
               <div>
-                <div className="font-bold text-slate-900 dark:text-white text-sm">
+                <div className="font-bold font-display text-slate-900 dark:text-white text-base">
                   LNMIIT, Jaipur
                 </div>
-                <div className="text-xs text-slate-500 dark:text-slate-400">
+                <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                   B.Tech in Electronics & Communication (2023–2027)
                 </div>
               </div>
 
-              <div className="pt-2 border-t border-slate-100 dark:border-slate-800">
-                <div className="font-bold text-slate-900 dark:text-white text-sm">
+              <div className="pt-3 border-t border-slate-100 dark:border-slate-800">
+                <div className="font-bold font-display text-slate-900 dark:text-white text-base">
                   IIT Madras
                 </div>
-                <div className="text-xs text-slate-500 dark:text-slate-400">
+                <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                   BS in Data Science & Applications (Concurrent)
                 </div>
               </div>
             </div>
 
-            <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center gap-2 text-xs text-emerald-600 dark:text-emerald-400 font-medium">
+            <div className="mt-5 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center gap-2 text-xs text-emerald-600 dark:text-emerald-400 font-medium">
               <CheckCircle className="w-3.5 h-3.5" />
               <span>Full-time engineering + rigorous data science</span>
             </div>
@@ -82,14 +82,14 @@ export default function About() {
           {aboutData.pillars.map((pillar) => (
             <div
               key={pillar.id}
-              className="group relative rounded-2xl p-6 bg-white dark:bg-dark-850 border border-slate-200/90 dark:border-slate-800 hover:border-blue-500/50 transition-all duration-300 shadow-sm hover:shadow-glow-sm flex flex-col justify-between"
+              className="group relative rounded-3xl p-6 sm:p-8 bg-white dark:bg-dark-850 border border-slate-200/90 dark:border-slate-800 hover:border-blue-500/50 transition-all duration-300 shadow-sm hover:shadow-glow-sm flex flex-col justify-between"
             >
               <div>
-                <div className="w-12 h-12 rounded-xl bg-blue-50 dark:bg-dark-800 border border-slate-200 dark:border-slate-700/60 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-200">
+                <div className="w-12 h-12 rounded-2xl bg-blue-50 dark:bg-dark-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform duration-200">
                   {getIcon(pillar.icon)}
                 </div>
 
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white tracking-tight mb-2.5">
+                <h3 className="text-xl font-bold font-display text-slate-900 dark:text-white tracking-tight mb-2.5">
                   {pillar.title}
                 </h3>
 

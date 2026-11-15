@@ -1,5 +1,5 @@
 import React from 'react';
-import { GraduationCap, Calendar, MapPin, Award, BookOpen, CheckCircle } from 'lucide-react';
+import { GraduationCap, Calendar, MapPin, Award, BookOpen, CheckCircle, ShieldCheck } from 'lucide-react';
 import { educationData } from '../data/portfolioData';
 
 export default function Education() {
@@ -13,11 +13,11 @@ export default function Education() {
             <GraduationCap className="w-3.5 h-3.5" />
             <span>ACADEMIC FOUNDATION</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-            Education
+          <h2 className="text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-slate-900 dark:text-white">
+            Dual Degree Education
           </h2>
-          <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base">
-            Pursuing concurrent degrees in Electronics & Communication and Data Science & Applications.
+          <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
+            Concurrent rigorous training in engineering systems and data science.
           </p>
           <div className="w-16 h-1 bg-gradient-to-r from-blue-600 to-cyan-500 mx-auto rounded-full"></div>
         </div>
@@ -32,7 +32,7 @@ export default function Education() {
               <div>
                 {/* Header Badge */}
                 <div className="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800">
-                  <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 flex items-center justify-center font-bold">
+                  <div className="w-11 h-11 rounded-2xl bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 flex items-center justify-center font-bold">
                     <GraduationCap className="w-5 h-5" />
                   </div>
                   <span className="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-emerald-50 dark:bg-dark-900 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-slate-800">
@@ -42,7 +42,7 @@ export default function Education() {
 
                 {/* Institution & Degree */}
                 <div className="mt-5 space-y-1.5">
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-500 transition-colors">
+                  <h3 className="text-xl font-bold font-display text-slate-900 dark:text-white group-hover:text-blue-500 transition-colors">
                     {edu.institution}
                   </h3>
                   <div className="text-sm font-semibold text-blue-600 dark:text-blue-400">
@@ -80,8 +80,10 @@ export default function Education() {
 
               {/* Verified academic track */}
               <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[11px] font-mono text-slate-500">
-                <span>Verified Academic Credentials</span>
-                <span className="text-blue-500">Degree Candidate</span>
+                <span>Verified Academic Candidate</span>
+                <span className="text-blue-500 flex items-center gap-1">
+                  <ShieldCheck className="w-3.5 h-3.5" /> Enrolled
+                </span>
               </div>
             </div>
           ))}
